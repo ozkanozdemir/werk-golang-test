@@ -1,0 +1,879 @@
+{
+	"info": {
+		"_postman_id": "be6cb3dc-ee02-46ca-9627-f5aa74199d6d",
+		"name": "Werk-Golang-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Graphql",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query MyQuery {\n  users_by_pk(id: 1) {\n    id\n    email\n    firstname\n    lastname\n    created_at\n    updated_at\n    companies {\n      company {\n        id\n        name\n        created_at,\n        updated_at\n      }\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query MyQuery {\n  users {\n    id\n    email\n    firstname\n    lastname\n    created_at\n    updated_at\n    companies {\n      company {\n        id\n        name\n        created_at,\n        updated_at\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  insert_users(objects: [{\n    email: \"8@email.com\",\n    firstname: \"name\",\n    lastname: \"surname\"\n  }]) {\n    returning {\n      id\n      email\n      firstname\n      lastname\n      created_at\n      updated_at\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  update_users_by_pk(\n    pk_columns: {id: 1}, \n    _set: {\n      email: \"1@email.com\", \n      firstname: \"name updated\", \n      lastname: \"surname updated\"\n    }) {\n    id\n    email\n    firstname\n    lastname\n    created_at\n    updated_at\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  delete_users_by_pk(id: 5) {\n    id\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query MyQuery {\n  companies_by_pk(id: 1) {\n    id\n    name\n    created_at\n    updated_at\n    users {\n      user {\n        id\n        email\n        firstname\n        lastname\n        created_at,\n        updated_at\n      }\n    }\n  }\n}\n\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Companies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query MyQuery {\n  companies {\n    id\n    name\n    created_at\n    updated_at\n    users {\n      user {\n        id\n        email\n        firstname\n        lastname\n        created_at,\n        updated_at\n      }\n    }\n  }\n}\n\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  insert_companies(objects: [{\n    name: \"Company 3\"\n  }]) {\n    returning {\n      id\n      name\n      created_at\n      updated_at\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  update_companies_by_pk(\n    pk_columns: {id: 1}, \n    _set: {\n      name: \"Company 1 - Updated\"\n    }) {\n    id\n    name\n    created_at\n    updated_at\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  delete_companies_by_pk(id: 4) {\n    id\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Relationship",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  insert_user_company(objects: {company_id: 4, user_id: 5}) {\n    returning {\n      id\n      company {\n        id\n        name\n        created_at\n        updated_at\n      }\n      user {\n        id\n        email\n        firstname\n        lastname\n        created_at\n        updated_at\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Relationship",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-hasura-admin-secret",
+								"value": "{hasuraAdminKey}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  delete_user_company(where: {_and: {user_id: {_eq: 5}, company_id: {_eq: 4}}}) {\n    returning {\n      company_id\n      user_id\n      id\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://werk-golang-test.hasura.app/v1/graphql",
+							"protocol": "https",
+							"host": [
+								"werk-golang-test",
+								"hasura",
+								"app"
+							],
+							"path": [
+								"v1",
+								"graphql"
+							],
+							"query": [
+								{
+									"key": "content-type",
+									"value": "application/json",
+									"disabled": true
+								},
+								{
+									"key": "x-hasura-admin-secret",
+									"value": "FHMh3YyL6Z1jDjWEg7R1roGg0ThnsW15GnoP2rN3FxFNo1gnqwfIIeAguuvzNzIL",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Golang",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"10@email.com\",\n    \"name\": \"Name\",\n    \"surname\": \"Surname\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"10@email.com\",\n    \"name\": \"Name Updated\",\n    \"surname\": \"Surname Updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/companies/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"companies",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Company 10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Company 10 Updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/companies/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"companies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Company",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/companies/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"companies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Relationship",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"6\",\n    \"company\": \"6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users-companies/add-relationship",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users-companies",
+								"add-relationship"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Relationship",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"6\",\n    \"company\": \"6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users-companies/remove-relationship",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users-companies",
+								"remove-relationship"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
